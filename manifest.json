@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "Add Google Translate",
+  "version": "1.0.0-alpha",
+  "description": "Adds Google Translate to webpages",
+  "homepage_url": "https://github.com/arschedev/AddGoogleTranslate",
+  "author": "arschedev",
+  "applications": {
+    "gecko": {
+      "strict_min_version": "45.0"
+    }
+  },
+  "icons": {
+    "96": "./icons/icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+  "page_action": {
+    "default_title": "Add Google Translate",
+    "default_icon": "./icons/icon.png",
+    "browser_style": true
+  },
+  "background": {
+    "scripts": [
+      "index.js"
+    ]
+  }
+}
