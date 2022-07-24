@@ -12,6 +12,6 @@ run `npm run ig` and then repeat step 5 (`npm run dev`)
 #### With automated launcher
 1. Find the latest release in [Releases](https://github.com/arschedev/AddGoogleTranslate/releases)
 2. Download an executable file for your operating system   
-   from *Assets* (`AGTWebExtLauncher-*`), e.g. `AGTWebExtLauncher-windows.exe`
+   from *Assets* (`AGTWebExtLauncher-*`), e.g. `AGTWebExtLauncher-win.exe`
 3. Open it
 > It's an alpha version
