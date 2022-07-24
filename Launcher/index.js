@@ -6,7 +6,7 @@
  * Licensed under the GNU General Public License v2.0
  */
 
-let VERSION = '2';
+let VERSION = '3';
 
 // Imports
 const fs = require('fs');
@@ -19,20 +19,32 @@ const rwf = require('read-webfile');
 let print = (str) => process.stdout.write(str);
 let println = (...strs) => console.log(...strs);
 
+let Okay = () => print('yes it is\n'.green);
+let Failed = () => print('no it\'s not\n'.yellow);
+
 const Sleep = t => new Promise(r => setTimeout(r, t));
 
-let Run = (cmd) => execSync(cmd, { stdio: 'ignore' });
-let OutputWhileRunning = (cmd) => execSync(cmd, { stdio: 'inherit' });
+let Run = (cmd) => {
+  try {
+    execSync(cmd, { stdio: 'ignore' });
+  } catch (e) {
+    Oops(e);
+  }
+}
+let OutputWhileRunning = (cmd) => {
+  try {
+    execSync(cmd, { stdio: 'inherit' });
+  } catch (e) {
+    Oops(e);
+  }
+}
 
 let ReadWebFile = (url, cb) => new Promise((resolve) => {
-  rwf.readFileFromWeb(url, 'utf-8', function(err, data) {
+  rwf.readFileFromWeb(url, 'utf-8', (err, data) => {
     cb(err, data);
     resolve(data);
   });
 });
-
-let Okay = () => print('yes it is\n'.green);
-let Failed = () => print('no it\'s not\n'.yellow);
 
 function Oops(error) {
   println(
@@ -62,21 +74,25 @@ function DownloadSpinner(text) {
 
 // Start
 (async () => {
-  await ReadWebFile(
-      'https://raw.githubusercontent.com/arschedev/AddGoogleTranslate/main/Launcher/package.json',
-      function(err, data) {
-        if (err) {
-          Oops(err);
-          return 0;
-        }
-        if (JSON.parse(data.toString()).version.split('-').at(-1) > VERSION) {
-          println(('\n Update available ' + JSON.parse(data.toString()).version).yellow);
-        }
-      });
-  println('\n Version 1.1 (1.0.0-alpha.1)'.gray);
-  println('', '<=== My WebExt Launcher ===>'.bgYellow.black);
-  println('    For AddGoogleTranslate\n'.red);
-  println(' Note: always check your internet connection\n'.blue);
+  try {
+    await ReadWebFile(
+        'https://raw.githubusercontent.com/arschedev/AddGoogleTranslate/main/Launcher/package.json',
+        function(err, data) {
+          if (err) {
+            Oops(err);
+            return 0;
+          }
+          if (JSON.parse(data.toString()).version.split('-').slice(-1)[0] > VERSION) {
+            println(('\n Update available ' + JSON.parse(data.toString()).version).yellow);
+          }
+        });
+    println('\n Version 1.1.1 (1.0.0-alpha.1)'.gray);
+    println('', '<=== My WebExt Launcher ===>'.bgYellow.black);
+    println('    For AddGoogleTranslate\n'.red);
+    println(' Note: always check your internet connection\n'.blue);
+  } catch (e) {
+    Oops(e);
+  }
 
   try {
     //! web-ext check
@@ -141,8 +157,8 @@ async function runWebExt() {
             (err, new_package_json) => {
               if (err) throw err;
               latest_version = JSON.parse(new_package_json).version;
-              let version_old = JSON.parse(old_package_json.toString()).version.split('-').at(-1);
-              let version_new = JSON.parse(new_package_json.toString()).version.split('-').at(-1);
+              let version_old = JSON.parse(old_package_json.toString()).version.split('-').slice(-1)[0];
+              let version_new = JSON.parse(new_package_json.toString()).version.split('-').slice(-1)[0];
               if (version_new > version_old) {
                 toDownload = true;
               } else {
@@ -159,7 +175,7 @@ async function runWebExt() {
       print(('found ' + latest_version).green);
       await Sleep(1000);
       //! download spinner
-      let Spinner = DownloadSpinner(`Downloading AddGoogleTranslate${' (' + latest_version + ') '}...`);
+      let Spinner = DownloadSpinner(`Downloading AddGoogleTranslate${latest_version ? ' (' + latest_version + ') ' : ''}...`);
       //! downloading repo
       download('arschedev/AddGoogleTranslate', './__AddGoogleTranslate__/', {},
           function(err) {
