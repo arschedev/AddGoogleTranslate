@@ -5,7 +5,6 @@
  * Licensed under the GNU General Public License v2.0
  */
 
-
 (function AddGoogleTranslate() {
   try {
     //! greeting
@@ -23,7 +22,7 @@
     function AddGoogleTranslateInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'auto',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        layout:       google.translate.TranslateElement.InlineLayout.SIMPLE
       }, '__AGT__google_translate_element');
     }
 
