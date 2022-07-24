@@ -1,7 +1,7 @@
 {
   "name": "launcher",
-  "version": "1.0.0",
-  "description": "web-ext launcher for add-on",
+  "version": "1.0.0-1",
+  "description": "Web-Ext Launcher for AddGoogleTranslate",
   "main": "index.js",
   "scripts": {
     "test": "node --version",
@@ -14,10 +14,11 @@
     "url": "https://github.com/arschedev/AddGoogleTranslate"
   },
   "devDependencies": {
-    "pkg": "^5.8.0"
+    "pkg": "^4.5.1"
   },
   "dependencies": {
     "colors": "^1.4.0",
-    "download-git-repo": "^3.0.2"
+    "download-git-repo": "^0.0.2",
+    "read-webfile": "^0.2.1"
   }
 }
