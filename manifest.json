@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Add Google Translate",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.2",
   "description": "Adds Google Translate to webpages",
   "homepage_url": "https://github.com/arschedev/AddGoogleTranslate",
   "author": "arschedev",

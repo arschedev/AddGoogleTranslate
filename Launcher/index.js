@@ -6,7 +6,7 @@
  * Licensed under the GNU General Public License v2.0
  */
 
-let VERSION = '3';
+/* */
 
 // Imports
 const fs = require('fs');
@@ -14,6 +14,9 @@ const { execSync } = require('child_process');
 const colors = require('colors');
 const download = require('download-git-repo');
 const rwf = require('read-webfile');
+
+// Version
+const VERSION = '3';
 
 // Utils
 let print = (str) => process.stdout.write(str);
@@ -86,7 +89,7 @@ function DownloadSpinner(text) {
             println(('\n Update available ' + JSON.parse(data.toString()).version).yellow);
           }
         });
-    println('\n Version 1.1.1 (1.0.0-alpha.1)'.gray);
+    println('\n Version 1.1.1 (at 1.0.0-alpha.1)'.gray);
     println('', '<=== My WebExt Launcher ===>'.bgYellow.black);
     println('    For AddGoogleTranslate\n'.red);
     println(' Note: always check your internet connection\n'.blue);
