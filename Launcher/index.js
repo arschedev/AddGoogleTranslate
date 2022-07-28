@@ -16,7 +16,7 @@ const download = require('download-git-repo');
 const rwf = require('read-webfile');
 
 // Version
-const VERSION = '3';
+const VERSION = '4';
 
 // Utils
 let print = (str) => process.stdout.write(str);
@@ -33,14 +33,14 @@ let Run = (cmd) => {
   } catch (e) {
     Oops(e);
   }
-}
+};
 let OutputWhileRunning = (cmd) => {
   try {
     execSync(cmd, { stdio: 'inherit' });
   } catch (e) {
     Oops(e);
   }
-}
+};
 
 let ReadWebFile = (url, cb) => new Promise((resolve) => {
   rwf.readFileFromWeb(url, 'utf-8', (err, data) => {
@@ -78,6 +78,7 @@ function DownloadSpinner(text) {
 // Start
 (async () => {
   try {
+    //! update check
     await ReadWebFile(
         'https://raw.githubusercontent.com/arschedev/AddGoogleTranslate/main/Launcher/package.json',
         function(err, data) {
@@ -89,7 +90,8 @@ function DownloadSpinner(text) {
             println(('\n Update available ' + JSON.parse(data.toString()).version).yellow);
           }
         });
-    println('\n Version 1.1.1 (at 1.0.0-alpha.1)'.gray);
+    //! welcome
+    println('\n Version 1.1.2 (at 1.0.0-alpha.3)'.gray);
     println('', '<=== My WebExt Launcher ===>'.bgYellow.black);
     println('    For AddGoogleTranslate\n'.red);
     println(' Note: always check your internet connection\n'.blue);
@@ -106,7 +108,8 @@ function DownloadSpinner(text) {
   } catch (E1) {
     Failed();
     print(
-        '\n Installing web-ext globally with `npm install --global web-ext` ...\n (You can uninstall it with `npm uninstall --global web-ext`, if you want)\n ... '.magenta.bold);
+        '\n Installing web-ext globally with `npm install --global web-ext` ...\n (You can uninstall it later with' +
+        ' `npm uninstall --global web-ext`, if you want)\n ... '.magenta.bold);
     try {
       //! web-ext check error -> install web-ext
       Run('npm install --global web-ext');
@@ -120,19 +123,20 @@ function DownloadSpinner(text) {
         Run('node -v');
         Okay();
         //! node check okay -> unknown error
-        println(` Hm, strange... So it seems to be like you got an unknown error, so the program doesn't know how to deal with it...
- If you are a programmer, you can try to fix it by yourself,
- If you aren't or error text isn't informative enough - Go there \`https://github.com/arschedev/AddGoogleTranslate/issues\`.
- If you haven't found anything there that explains how to fix an error, just create an "issue" on same GitHub page, 
+        println(` Hm, strange... It seems to be like you've got an unknown error, so the program doesn't know how to deal with it...
+ If you are a programmer, you can try to fix it yourself,
+ If you aren't or error text isn't informative enough - go there \`https://github.com/arschedev/AddGoogleTranslate/issues\`.
+ If you haven't found anything there that explains how to fix an error, simply create an "issue" on same GitHub page, 
  so dev at least will know about it and probably fix the error in the future.
  
  You can also do all this without a web-ext launcher, 
- just go to \`https://github.com/arschedev/AddGoogleTranslate#readme\` and follow the instructions`.yellow.bold);
+ simply go to \`https://github.com/arschedev/AddGoogleTranslate#readme\` and follow the instructions`.yellow.bold);
       } catch (E3) {
         //! node check error -> node not installed
         Failed();
         println(
-            ' You need NodeJS to install anything with `npm`.\n You can get NodeJS at https://nodejs.org, and then return to this program.'.magenta.bold);
+            ' You need NodeJS to install anything with `npm`.\n You can get NodeJS at https://nodejs.org, and then' +
+            ' return to the program.'.magenta.bold);
       }
     }
   }
@@ -178,7 +182,9 @@ async function runWebExt() {
       print(('found ' + latest_version).green);
       await Sleep(1000);
       //! download spinner
-      let Spinner = DownloadSpinner(`Downloading AddGoogleTranslate${latest_version ? ' (' + latest_version + ') ' : ''}...`);
+      let Spinner = DownloadSpinner(`Downloading AddGoogleTranslate${latest_version
+                                                                     ? ' (' + latest_version + ') '
+                                                                     : ''}...`);
       //! downloading repo
       download('arschedev/AddGoogleTranslate', './__AddGoogleTranslate__/', {},
           function(err) {

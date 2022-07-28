@@ -1,6 +1,6 @@
 # 🧩 Add Google Translate
 ###### Google Translate add-on for Mozilla Firefox
-### How to run it
+## How to test it
 #### 📄 Manually *(make sure [NodeJS](https://nodejs.org) is installed)*  
 *Note: for Windows 7 use [NodeJS 12](https://nodejs.org/download/release/v12.22.12)*
 1. Download repository
