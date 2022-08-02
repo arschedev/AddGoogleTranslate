@@ -7,7 +7,7 @@
 
 //! Utils
 /**
- * Waits until the element exists, then returns that element;
+ * Waits until the element exists, then returns that element |
  * e.g. `GetElement(<query>).then(element => console.log(element))`
  * @param {string} sel - selector (query)
  * @returns {Promise<HTMLElement>} - HTML element
