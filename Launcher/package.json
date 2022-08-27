@@ -9,7 +9,7 @@
     "trace": "node --trace-exit --trace-sigint --trace-sync-io --trace-tls --trace-uncaught --trace-warnings --track-heap-objects index.js"
   },
   "author": "arschedev",
-  "license": "GPL-2.0-only",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/arschedev/AddGoogleTranslate/tree/main/Launcher"

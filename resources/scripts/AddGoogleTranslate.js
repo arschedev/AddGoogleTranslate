@@ -1,8 +1,5 @@
 /**
- * Add Google Translate. Adds Google Translate to webpages
- * Copyright (c) 2022 Arseniy Chereda, aka arschedev
- *
- * Licensed under the GNU General Public License v2.0
+ * Copyright (c) 2022 arschedev
  */
 
 //! Utils
@@ -26,7 +23,7 @@ function GetElement(sel) {
     });
     observer.observe(document.body, {
       childList: true,
-      subtree:   true
+      subtree: true
     });
   });
 }
@@ -49,7 +46,7 @@ function GetElement(sel) {
     function AddGoogleTranslateInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'auto',
-        layout:       google.translate.TranslateElement.InlineLayout.SIMPLE
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, '__AGT__google_translate_element');
     }
 
