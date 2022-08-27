@@ -1,8 +1,5 @@
 /**
- * Add Google Translate. Adds Google Translate to webpages
- * Copyright (c) 2022 Arseniy Chereda, aka arschedev
- *
- * Licensed under the GNU General Public License v2.0
+ * Copyright (c) 2022 arschedev
  */
 
 //! Button

@@ -1,1 +1,1 @@
-#### 🚀 Executables are in `Launcher/` directory, [here](https://github.com/arschedev/AddGoogleTranslate/tree/main/Launcher/Launcher)
+#### 🚀 Executables are in [`Launcher/`](https://github.com/arschedev/AddGoogleTranslate/tree/main/Launcher/Launcher) directory

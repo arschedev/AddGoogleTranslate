@@ -1,9 +1,5 @@
 /**
- * Add Google Translate project
- * Web-Ext Launcher for AddGoogleTranslate
- * Copyright (c) 2022 Arseniy Chereda, aka arschedev
- *
- * Licensed under the GNU General Public License v2.0
+ * Copyright (c) 2022 arschedev
  */
 
 /* */
@@ -182,9 +178,8 @@ async function runWebExt() {
       print(('found ' + latest_version).green);
       await Sleep(1000);
       //! download spinner
-      let Spinner = DownloadSpinner(`Downloading AddGoogleTranslate${latest_version
-                                                                     ? ' (' + latest_version + ') '
-                                                                     : ''}...`);
+      let Spinner = DownloadSpinner(
+          `Downloading AddGoogleTranslate${latest_version ? ' (' + latest_version + ') ' : ''}...`);
       //! downloading repo
       download('arschedev/AddGoogleTranslate', './__AddGoogleTranslate__/', {},
           function(err) {

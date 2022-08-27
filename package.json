@@ -1,6 +1,6 @@
 {
   "name": "add-google-translate",
-  "version": "1.0.0-alpha.3-6",
+  "version": "1.0.0-alpha.3-7",
   "description": "Adds Google Translate to webpages",
   "scripts": {
     "test": "node --version",
@@ -8,7 +8,7 @@
     "dev": "web-ext run --verbose"
   },
   "author": "arschedev",
-  "license": "GPL-2.0-only",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/arschedev/AddGoogleTranslate"
