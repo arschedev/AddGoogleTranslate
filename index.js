@@ -11,9 +11,6 @@ browser.tabs.onUpdated.addListener((_tabId, _changeInfo, tab) => {
 
 //! Click
 browser.pageAction.onClicked.addListener((tab) => {
-  // browser.tabs.executeScript(tab.id, {
-  //   file: './resources/scripts/GoogleTranslateAPI.js'
-  // });
   browser.tabs.executeScript(tab.id, {
     file: './resources/scripts/AddGoogleTranslate.js'
   });

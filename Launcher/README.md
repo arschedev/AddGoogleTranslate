@@ -1,1 +1,0 @@
-#### 🚀 Executables are in [`Launcher/`](https://github.com/arschedev/AddGoogleTranslate/tree/main/Launcher/Launcher) directory
